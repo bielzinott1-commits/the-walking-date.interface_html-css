@@ -1,13 +1,34 @@
+
+/* 1. VARIÁVEIS GLOBAIS */
 :root {
-    --cor-fundo: #1a1a1a;
+    /* Cores principais */
+    --cor-fundo-base: #1a1a1a;
+    --cor-texto-base: #e0e0e0;
+    --cor-superficie: #222222;
     --cor-card: #252525;
     --cor-sangue: #8b0000;
-    --cor-sangue-claro: #b22222;
     --cor-zumbi: #2e8b57;
-    --cor-texto: #e0e0e0;
     --cor-texto-secundario: #aaaaaa;
+    --cor-borda: #444444;
+
+    /* Espaçamentos */
+    --espaco-p: 8px;
+    --espaco-m: 16px;
+    --espaco-g: 32px;
+
+    /* Bordas, fonte e efeitos */
+    --borda-suave: 8px;
+    --borda-arredondada: 50px;
+    --fonte-principal: 'Arial', sans-serif;
+    --sombra-padrao: 0 4px 8px rgba(0, 0, 0, 0.5);
+    --transicao-rapida: 0.3s ease;
+
+    /* Cores dos campos */
+    --cor-input-fundo: #151515;
+    --cor-input-texto: #ffffff;
 }
 
+/* 2. CONFIGURAÇÕES GERAIS */
 * {
     margin: 0;
     padding: 0;
@@ -16,22 +37,28 @@
 }
 
 body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--cor-fundo-base);
+    color: var(--cor-texto-base);
+    font-family: var(--fonte-principal);
     line-height: 1.6;
 }
 
+/* 3. CABEÇALHO E MENU */
 header {
     background-color: #080808;
-    padding: 30px 20px;
+    padding: var(--espaco-m) var(--espaco-g);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     text-align: center;
+    gap: var(--espaco-m);
     border-bottom: 3px solid var(--cor-sangue);
 }
 
 header h1 {
     color: var(--cor-sangue);
-    font-size: 2.5rem;
+    font-size: calc(1.5rem + 1vw);
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 12px #8b0000;
@@ -39,39 +66,38 @@ header h1 {
 
 header p {
     color: var(--cor-texto-secundario);
-    margin: 8px 0 20px;
+    margin: var(--espaco-p) 0;
 }
 
 nav ul {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: var(--espaco-p);
     list-style: none;
-    flex-wrap: wrap;
-    margin-top: 20px;
 }
 
 nav a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: all var(--transicao-rapida);
 }
 
 nav a:hover {
     color: var(--cor-zumbi);
 }
 
+/* 4. ÁREA PRINCIPAL E SEÇÕES */
 main {
-    max-width: 1100px;
+    width: calc(100% - (var(--espaco-g) * 2));
+    max-width: 1000px;
     margin: 40px auto;
-    padding: 0 25px;
 }
 
 section {
-    margin-bottom: 65px;
+    margin-bottom: calc(var(--espaco-g) * 2);
 }
 
 h2 {
@@ -83,53 +109,69 @@ h2 {
 }
 
 h3 {
-    color: var(--cor-sangue-claro);
+    color: var(--cor-sangue);
     margin-bottom: 12px;
 }
 
+/* 5. SEÇÃO DE BOAS-VINDAS */
+#boas-vindas,
 #Boas\ Vindas {
     text-align: center;
 }
 
+#boas-vindas h2,
 #Boas\ Vindas h2 {
     text-transform: uppercase;
     font-size: 2rem;
 }
 
-#Boas\ Vindas img {
-    display: block;
-    width: 75%;
-    max-width: 650px;
+img {
+    width: 100%;
+    max-width: 100%;
     height: auto;
-    margin: 25px auto;
-    border: 4px solid var(--cor-sangue);
-    border-radius: 12px;
-    filter: grayscale(65%) sepia(25%);/* deixa a foto principal preta e branca*/
-    transition: filter 0.5s ease, transform 0.5s ease;
+    transition: filter 0.5s ease, transform var(--transicao-rapida);
 }
 
+#boas-vindas img,
+#Boas\ Vindas img {
+    display: block;
+    max-width: 650px;
+    margin: 25px auto;
+    border: 4px solid var(--cor-sangue);
+    border-radius: var(--borda-suave);
+    filter: grayscale(80%) sepia(30%);
+}
+
+#boas-vindas img:hover,
 #Boas\ Vindas img:hover {
-    filter: none;/* deixa a foto normal denovo quando passado o mouse por cima*/
+    filter: none;
     transform: scale(1.02);
 }
 
 figcaption {
     color: var(--cor-texto-secundario);
     font-style: italic;
-    margin-top: 12px;
+    margin-top: 10px;
+}
+
+/* 6. BENEFÍCIOS E PAINEL */
+#beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-g);
 }
 
 #beneficios ol {
-    padding-left: 35px;
+    padding-left: 20px;
 }
 
 #beneficios li {
     background-color: var(--cor-card);
     padding: 12px 18px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     border-left: 4px solid var(--cor-zumbi);
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: var(--borda-suave);
+    transition: all var(--transicao-rapida);
 }
 
 #beneficios li:hover {
@@ -137,16 +179,18 @@ figcaption {
 }
 
 strong {
-    color: var(--cor-sangue-claro);
+    color: var(--cor-sangue);
 }
 
 aside {
-    background-color: var(--cor-card);
-    border: 2px dashed var(--cor-zumbi);
-    border-radius: 10px;
+    background-color: var(--cor-superficie);
+    border: 1px dashed var(--cor-zumbi);
+    border-radius: var(--borda-suave);
     padding: 25px;
     margin-bottom: 60px;
     text-align: center;
+    box-shadow: var(--sombra-padrao);
+    transition: all var(--transicao-rapida);
 }
 
 aside h3 {
@@ -154,16 +198,29 @@ aside h3 {
     font-size: 1.4rem;
 }
 
+/* Efeito de elevação dos cartões */
+aside:hover,
+#depoimento:hover,
+.cartao-zumbi:hover {
+    box-shadow: 0 8px calc(var(--espaco-m) * 1.5) rgba(0, 0, 0, 0.7);
+    transform: translateY(-5px);
+}
+
+/* 7. DEPOIMENTO */
 #depoimento {
     background-color: var(--cor-card);
     padding: 30px;
-    border-radius: 10px;
+    border-radius: var(--borda-suave);
     border-left: 5px solid var(--cor-sangue);
+    box-shadow: var(--sombra-padrao);
+    transition: all var(--transicao-rapida);
 }
 
 #depoimento blockquote {
     font-style: italic;
-    font-size: 1.05rem;
+    font-size: 1.2rem;
+    border-left: 5px solid var(--cor-zumbi);
+    padding-left: 20px;
 }
 
 #depoimento blockquote p {
@@ -178,33 +235,36 @@ aside h3 {
 }
 
 #depoimento cite {
-    color: var(--cor-zumbi);
+    display: block;
+    color: var(--cor-sangue);
     font-weight: bold;
     font-style: normal;
+    text-align: right;
 }
 
+/* 8. PERGUNTAS FREQUENTES */
 #faq details {
-    background-color: var(--cor-card);
-    padding: 18px 22px;
-    margin-bottom: 15px;
+    background-color: var(--cor-superficie);
+    padding: 15px;
+    margin-bottom: 10px;
     border-left: 4px solid var(--cor-sangue);
-    border-radius: 6px;
-    transition: border-color 0.3s ease;
+    border-radius: var(--borda-suave);
+    transition: all var(--transicao-rapida);
 }
 
 #faq summary {
     color: var(--cor-zumbi);
     font-weight: bold;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all var(--transicao-rapida);
 }
 
 #faq summary:hover {
-    color: white;
+    color: var(--cor-texto-base);
 }
 
 #faq details p {
-    color: var(--cor-texto-secundario);
+    color: #bbbbbb;
     margin-top: 15px;
 }
 
@@ -212,6 +272,7 @@ aside h3 {
     border-left-color: var(--cor-zumbi);
 }
 
+/* 9. TABELA DE PLANOS */
 #planos {
     overflow-x: auto;
 }
@@ -222,11 +283,13 @@ aside h3 {
 }
 
 table {
+    display: block;
     width: 100%;
     min-width: 550px;
     border-collapse: collapse;
     background-color: var(--cor-card);
     text-align: center;
+    overflow-x: auto;
 }
 
 caption {
@@ -238,13 +301,13 @@ caption {
 
 th,
 td {
-    border: 1px solid #444444;
+    border: 1px solid var(--cor-borda);
     padding: 15px;
 }
 
 thead th {
     background-color: var(--cor-sangue);
-    color: white;
+    color: #ffffff;
     text-transform: uppercase;
 }
 
@@ -267,7 +330,7 @@ tfoot td {
     font-weight: bold;
 }
 
-/* CADASTRO */
+/* 10. FORMULÁRIO DE CADASTRO */
 #cadastro > p {
     color: var(--cor-texto-secundario);
     margin-bottom: 25px;
@@ -276,16 +339,16 @@ tfoot td {
 form {
     background-color: var(--cor-card);
     padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #444444;
+    border-radius: var(--borda-suave);
+    border: 1px solid var(--cor-borda);
 }
 
-/* AGRUPAMENTO DOS DADOS */
 fieldset {
     border: 2px solid var(--cor-zumbi);
-    border-radius: 8px;
+    border-radius: var(--borda-suave);
     padding: 25px;
     margin-bottom: 25px;
+    box-shadow: var(--sombra-padrao);
 }
 
 legend {
@@ -295,32 +358,29 @@ legend {
     font-size: 1.1rem;
 }
 
-/* RÓTULOS */
 label {
     display: block;
-    color: var(--cor-texto);
+    color: var(--cor-texto-base);
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
-/* CAMPOS DE TEXTO */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="date"],
 select {
     width: 100%;
-    padding: 13px;
-    margin-bottom: 22px;
-    background-color: #151515;
-    color: white;
-    border: 1px solid #555555;
-    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: var(--cor-input-fundo, #333);
+    color: var(--cor-input-texto, #ffffff);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--borda-suave);
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: all var(--transicao-rapida);
 }
 
-/* EFEITO AO CLICAR NOS CAMPOS */
 input:focus,
 select:focus {
     outline: none;
@@ -328,7 +388,6 @@ select:focus {
     box-shadow: 0 0 6px var(--cor-zumbi);
 }
 
-/* OPÇÕES DE DIETA */
 #cadastro fieldset input[type="radio"] {
     accent-color: var(--cor-zumbi);
     margin: 10px 6px 10px 0;
@@ -339,66 +398,185 @@ select:focus {
     margin-right: 20px;
 }
 
-/* BOTÕES */
+/* 11. BOTÕES */
+button,
+nav a {
+    transition: all var(--transicao-rapida);
+}
+
 button[type="submit"] {
     display: block;
     width: 100%;
-    padding: 15px;
+    padding: 15px 30px;
     margin-top: 20px;
-    background-color: var(--cor-sangue);
-    color: white;
+    background-color: var(--cor-zumbi);
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--borda-suave);
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: var(--cor-zumbi);
-    transform: translateY(-2px);
+    background-color: var(--cor-sangue);
 }
 
-/* RODAPÉ */
+/* Cor própria do botão de match */
+.botao-match {
+    --cor-botao: var(--cor-zumbi);
+
+    background-color: var(--cor-botao);
+    color: #ffffff;
+    padding: var(--espaco-p) var(--espaco-m);
+    border: none;
+    border-radius: var(--borda-suave);
+    cursor: pointer;
+    transition: all var(--transicao-rapida);
+}
+
+.botao-match:hover {
+    --cor-botao: var(--cor-sangue);
+
+    background-color: var(--cor-botao);
+}
+
+/* Botão fixo para alternar o tema */
+#btn-tema {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    border-radius: var(--borda-arredondada);
+    padding: var(--espaco-p) var(--espaco-m);
+    background-color: var(--cor-texto-base);
+    color: var(--cor-fundo-base);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all var(--transicao-rapida);
+}
+
+#btn-tema:hover {
+    opacity: 0.8;
+}
+
+/* 12. RODAPÉ */
 body > footer {
     background-color: #080808;
     color: #888888;
     text-align: center;
-    padding: 25px;
-    margin-top: 50px;
-    border-top: 2px solid var(--cor-sangue);
+    padding: 30px;
+    margin-top: 40px;
+    border-top: 1px solid #333333;
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8rem;
+/* 13. MOBILE FIRST - TELAS PEQUENAS */
+header {
+    flex-direction: column;
+    text-align: center;
+}
+
+nav ul {
+    flex-direction: column;
+    gap: var(--espaco-p);
+}
+
+#beneficios {
+    flex-direction: column;
+}
+
+button[type="submit"] {
+    width: 100%;
+}
+
+/* 14. DESKTOP - TELAS A PARTIR DE 768PX */
+@media (min-width: 768px) {
+    :root {
+        --espaco-m: 24px;
+        --espaco-g: 48px;
+    }
+
+    header {
+        flex-direction: row;
+        text-align: left;
     }
 
     nav ul {
-        flex-direction: column;
-        gap: 12px;
+        flex-direction: row;
+        gap: var(--espaco-g);
     }
 
-    main {
-        padding: 0 15px;
+    #beneficios {
+        flex-direction: row;
+        align-items: flex-start;
     }
 
-    #Boas\ Vindas img {
-        width: 100%;
+    #beneficios ol {
+        flex: 2;
     }
 
-    #depoimento {
-        padding: 20px;
+    #beneficios aside,
+    #beneficios > aside {
+        flex: 1;
     }
 
-    form {
-        padding: 18px;
+    button[type="submit"] {
+        width: auto;
     }
+}
 
-    h2 {
-        font-size: 1.4rem;
+/* 15. TELAS GRANDES - A PARTIR DE 1024PX */
+@media (min-width: 1024px) {
+    #boas-vindas > p,
+    #Boas\ Vindas > p,
+    #beneficios > p {
+        max-width: 800px;
+        margin: 0 auto;
     }
+}
+
+/* 16. TEMA CLARO AUTOMÁTICO DO SISTEMA */
+@media (prefers-color-scheme: light) {
+    :root {
+        --cor-fundo-base: #f4f4f9;
+        --cor-texto-base: #111111;
+        --cor-superficie: #ffffff;
+        --cor-card: #ffffff;
+        --cor-borda: #cccccc;
+
+        --cor-sangue: #cc0000;
+        --cor-zumbi: #006400;
+
+        --cor-input-fundo: #ffffff;
+        --cor-input-texto: #333333;
+    }
+}
+
+/* 17. TEMA CLARO MANUAL */
+html[data-theme='light'] {
+    --cor-fundo-base: #f4f4f9;
+    --cor-texto-base: #111111;
+    --cor-superficie: #ffffff;
+    --cor-card: #ffffff;
+    --cor-borda: #cccccc;
+
+    --cor-sangue: #cc0000;
+    --cor-zumbi: #006400;
+
+    --cor-input-fundo: #ffffff;
+    --cor-input-texto: #333333;
+}
+
+html[data-theme='dark'] {
+    --cor-fundo-base: #1a1a1a;
+    --cor-texto-base: #e0e0e0;
+    --cor-superficie: #222222;
+    --cor-card: #252525;
+    --cor-borda: #444444;
+    --cor-sangue: #8b0000;
+    --cor-zumbi: #2e8b57;
+    --cor-input-fundo: #151515;
+    --cor-input-texto: #ffffff;
 }
