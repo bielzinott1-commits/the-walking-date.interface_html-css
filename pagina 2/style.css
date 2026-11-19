@@ -580,3 +580,48 @@ html[data-theme='dark'] {
     --cor-input-fundo: #151515;
     --cor-input-texto: #ffffff;
 }
+
+.destaque-infectado {
+    border: 2px solid var(--cor-sangue);
+    transform: scale(1.02);
+}
+
+#barra-alerta {
+    display: flex;
+    align-items: center;
+    background-color: var(--cor-sangue);
+}
+
+#fechar-alerta {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: var(--espaco-p) var(--espaco-m);
+    cursor: pointer;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: var(--cor-input-fundo);
+    color: var(--cor-input-texto);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--borda-suave);
+}
+
+#btn-calcular {
+    padding: 12px 24px;
+    background-color: var(--cor-zumbi);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--borda-suave);
+    cursor: pointer;
+}
+
+#resultado-quimica {
+    margin-top: var(--espaco-m);
+    color: var(--cor-zumbi);
+    font-weight: bold;
+}
